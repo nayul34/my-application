@@ -3,12 +3,16 @@ import { MdCheckBox, MdCheckBoxOutlineBlank } from "react-icons/md";
 import "./Item.css";
 
 const Item = ({ todo }) => {
-  const { id, text, checked } = todo;
+  const { id, date, text, checked, content } = todo;
   return (
     <div className="TodoItem">
       <div className={`content ${checked ? "checked" : ""}`}>
         {checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
-        <div className="text">{text}</div>
+        <div className="haveto">
+          <div className="tododate">{date}</div>
+          <div className="text">{text}</div>
+        </div>
+        <div className="more">{content}</div>
       </div>
     </div>
   );

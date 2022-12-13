@@ -1,0 +1,58 @@
+.TodoItem{
+  /* border-radius:5px; */
+  box-shadow: 0px 3px gray;
+  padding: 1rem;
+  display:flex;
+  align-items:center;
+  background-color: rgb(200, 175, 244);
+  width:337.5px;
+
+}
+.TodoItem +.TodoItem{
+margin-top: 5px;
+}
+
+.content{
+  cursor:pointer;
+  flex:1;
+  display: flex;
+  align-items:center;
+ 
+
+
+}
+.haveto{
+ display:flex;
+ flex-direction: column;
+ margin-left: 10px;
+}
+
+
+.content svg{
+  font-size:1.5rem;
+  color:white;
+  margin-left: 5px;
+
+}
+
+.content .text{
+  font-size:20px;
+  /* flex:1; */
+  margin-top:3px;
+  margin-bottom:-5px;
+ }
+.tododate{
+  font-size:10px;
+  margin-top:-5px;
+} 
+
+.content.checked .text{
+  color:gray;
+  text-decoration:line-through;
+  cursor:pointer;
+  opacity:0.6;
+}
+
+.more{
+  margin-left: 100px;
+}
