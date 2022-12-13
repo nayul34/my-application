@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import Main from "./pages/Main";
+import Todolist from "./pages/Todolist";
 
-function App() {
+const App = () => {
+  const [todos, setTodos] = useState([
+    { id: 1, text: "야호", checked: true },
+    {
+      id: 2,
+      text: "잇팅",
+      checked: true,
+    },
+    {
+      id: 3,
+      text: "운동",
+      checked: false,
+    },
+  ]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Main todoLength={todos.length}>
+      <Todolist
+        todos={todos}
+        // onCheckToggle={onCheckToggle}
+        // onInsertToggle={onInsertToggle}
+        // onChangeSelectedTodo={onChangeSelectedTodo}
+      />
+      {/* <div className="add-todo-button" onClick={onInsertToggle}>
+        <MdAddCircle />
+      </div> */}
+      {/* {insertToggle && (
+        <TodoInsert
+          selectedTodo={selectedTodo}
+          onInsertToggle={onInsertToggle}
+          onInsertTodo={onInsertTodo}
+        />
+      )} */}
+    </Main>
   );
-}
+};
 
 export default App;

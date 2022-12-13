@@ -1,0 +1,33 @@
+.Main{
+  padding-top :20px;
+  max-height: 100vh;
+}
+
+.Nav{
+  width:90vw;
+  height:100px;
+  margin-left:auto;
+  margin-right:auto;
+  padding-bottom:2-px;
+  font-weight:bold;
+  color:black;
+  display:flex;
+  flex-direction: column;
+  
+}
+.Nav_top{
+  font-size:1.0rem;
+}
+
+.Nav_bottom{
+  display:flex;
+  flex-direction: row;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:25px;
+  font-size:30px;
+
+}
+.menu{
+  margin-right:0px;
+}
