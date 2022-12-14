@@ -1,22 +1,25 @@
 import React, { useState } from "react";
 import "./Main.css";
-import { MdAddCircleOutline } from "react-icons/md";
+import { MdAddCircleOutline, MdOutlineLteMobiledata } from "react-icons/md";
 import Todolist from "../component/Todolist";
 import dummyDatas from "../dummyData";
 import TodoAdd from "../component/TodoAdd";
+import { TbAntennaBars5 } from "react-icons/tb";
+import { BsBatteryCharging } from "react-icons/bs";
 
 let nextId = 4;
 const Main = () => {
   const [todos, setTodos] = useState(dummyDatas);
   const [selectedTodo, setSelectedTodo] = useState(null);
-  const [insertToggle, setInsertToggle] = useState(false);
-  const onInsertToggle = () => {
-    setInsertToggle((prev) => !prev);
+  const [insertCircle, setInsertCircle] = useState(false);
+  //추가 버튼
+  const onInsertCircle = () => {
+    setInsertCircle((prev) => !prev);
   };
-
-  const onInsertTodo = (text, date) => {
+  //list에 item추가
+  const onAddTodo = (text, date) => {
     if (text === "" || date === "") {
-      return alert("할일을 입력해주세요");
+      return alert("입력해주세요");
     } else {
       const todo = {
         id: nextId,
@@ -28,8 +31,16 @@ const Main = () => {
       nextId++;
     }
   };
-
-  const onCheckToggle = (id) => {
+  //data저장
+  const onSelected = (todo) => {
+    setSelectedTodo(todo);
+  };
+  //삭제
+  const onRemove = (id) => {
+    setTodos((todos) => todos.filter((todo) => todo.id !== id));
+  };
+  //checkbox 변화
+  const onCheckBox = (id) => {
     setTodos((todos) =>
       todos.map((todo) =>
         todo.id === id ? { ...todo, checked: !todo.checked } : todo
@@ -37,13 +48,17 @@ const Main = () => {
     );
   };
 
-  const onChangeSelectedTodo = (todo) => {
-    setSelectedTodo(todo);
-  };
   return (
     <div className="Main">
       <div className="Nav">
-        <div className="Nav_top">4:41</div>
+        <div className="Nav_top">
+          4:41
+          <div className="Nav_top_left">
+            <TbAntennaBars5 />
+            <MdOutlineLteMobiledata />
+            <BsBatteryCharging />
+          </div>
+        </div>
         <div className="Nav_bottom">
           <div className="title">To-do list</div>
           {/* <div className="menu">
@@ -54,18 +69,19 @@ const Main = () => {
       {/* <div>{children}</div> */}
       <Todolist
         todos={todos}
-        onCheckToggle={onCheckToggle}
-        onInsertToggle={onInsertToggle}
-        onChangeSelectedTodo={onChangeSelectedTodo}
+        onCheckBox={onCheckBox}
+        onInsertCircle={onInsertCircle}
+        onSelected={onSelected}
+        onRemove={onRemove}
       />
-      <div className="add-todo-button" onClick={onInsertToggle}>
+      <div className="add-todo-button" onClick={onInsertCircle}>
         <MdAddCircleOutline />
       </div>
-      {insertToggle && (
+      {insertCircle && (
         <TodoAdd
           selectedTodo={selectedTodo}
-          onInsertToggle={onInsertToggle}
-          onInsertTodo={onInsertTodo}
+          onInsertCircle={onInsertCircle}
+          onAddTodo={onAddTodo}
         />
       )}
     </div>

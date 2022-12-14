@@ -4,7 +4,7 @@ const dummyDatas = [
     date: "12/31",
     text: "야호",
     checked: true,
-    content: "망진산",
+    content: "산",
   },
   {
     id: 2,
